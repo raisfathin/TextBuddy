@@ -1,4 +1,12 @@
-//These are the possible states of the program
-public enum ProgramState {
-	RUNNING, STOP
+
+public class ProgramState {
+	private ProgramStateType currentState = ProgramStateType.STOP;
+	
+	public void setState(ProgramStateType state) {
+		currentState = state;
+	}
+	
+	public ProgramStateType getState() {
+		return currentState;
+	}
 }

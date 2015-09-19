@@ -27,7 +27,7 @@ public class TextBuddyRunner {
 	private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
 	// This is to indicate whether the program should still run
-	private ProgramState currentProgramState;
+	private ProgramState currentProgramState = new ProgramState();
 
 	// This List is used to store all texts in the file
 	private TextList texts = null;
@@ -60,9 +60,9 @@ public class TextBuddyRunner {
 	 * also determines when to terminate for the program.
 	 */
 	public void run() {
-		currentProgramState = ProgramState.RUNNING;
+		currentProgramState.setState(ProgramStateType.RUNNING);
 
-		while (currentProgramState != ProgramState.STOP) {
+		while (currentProgramState.getState() != ProgramStateType.STOP) {
 			requestInput();
 			String userCommand = readUserCommand();
 			parseAndRunCommand(userCommand);
@@ -187,7 +187,7 @@ public class TextBuddyRunner {
 	 * the user enters an exit command.
 	 */
 	private void stopProgram() {
-		currentProgramState = ProgramState.STOP;
+		currentProgramState.setState(ProgramStateType.STOP);
 	}
 
 	/**
