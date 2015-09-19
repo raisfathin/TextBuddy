@@ -191,6 +191,35 @@ public class MyTest {
 		assertArrayEquals(new String[] {"test1", "test2"}, result);
 	}
 	
+	@Test
+	public void testTextBuddySort() {
+		Runtime r = Runtime.getRuntime();
+		try {
+			Process p = r.exec("rm mytextfile.txt");
+			p.waitFor();
+		} catch (IOException e) {
+			fail("Should be able to remove test file");
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			fail("Should be able to remove test file");
+			e.printStackTrace();
+		}
+		
+		String input = "add test1\nadd hue1\ndisplay\nsort\nexit\n";
+		InputStream stringStream = new ByteArrayInputStream(input.getBytes());
+
+		OutputStream outputStream = new ByteArrayOutputStream();
+		PrintStream printStream = new PrintStream(outputStream);
+		
+		System.setIn(stringStream);
+		System.setOut(printStream);
+		
+		TextBuddy.main(new String[] {"mytextfile.txt"});
+		
+		String result = outputStream.toString();
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: mytextfile.txt has been successfully sorted\ncommand: ", result);
+	}
+	
 	@After
 	public void tearDown() {
 		System.setSecurityManager(null);
