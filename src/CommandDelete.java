@@ -1,4 +1,8 @@
-
+/**
+ * This class provides execute method for delete commands
+ * 
+ * @author A0134155M
+ */
 public class CommandDelete extends Command {
 
 	private static final String INVALID_TEXT_INDEX_ERROR = "Invalid text index\n";
@@ -36,6 +40,14 @@ public class CommandDelete extends Command {
 		return true;
 	}
 	
+	/**
+	 * This method provides delete text functionality for TextBuddy
+	 * 
+	 * @param texts
+	 * 			    TextList that is being operated on
+	 * @param currentState
+	 * 				program state to be modified (if modified)
+	 */
 	@Override
 	public void execute(TextList texts, ProgramState currentState) {
 		if (!isANumber(commandParameter)) {

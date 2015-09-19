@@ -114,7 +114,7 @@ public class MyTest {
 		TextBuddy.main(new String[] {"mytextfile.txt"});
 		
 		String result = outputStream.toString();
-		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"little brown fox\"\ncommand: 1: little brown fox\ncommand: added to mytextfile.txt: \"jumped over the moon\"\ncommand: 1: little brown fox\n2: jumped over the moon\ncommand: deleted from mytextfile.txt: \"jumped over the moon\"\ncommand: 1: little brown fox\ncommand: all content deleted from mytextfile.txt\ncommand: mytextfile.txt is empty\ncommand: Invalid text index\ncommand: added to mytextfile.txt: \"foo\"\ncommand: added to mytextfile.txt: \"bar\"\ncommand: added to mytextfile.txt: \"baz\"\ncommand: 1: foo\n2: bar\n3: baz\ncommand: Invalid text index\ncommand: Invalid text index\ncommand: 1: foo\n2: bar\n3: baz\ncommand: all content deleted from mytextfile.txt\ncommand: ", result);
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"little brown fox\"\ncommand: 1. little brown fox\ncommand: added to mytextfile.txt: \"jumped over the moon\"\ncommand: 1. little brown fox\n2. jumped over the moon\ncommand: deleted from mytextfile.txt: \"jumped over the moon\"\ncommand: 1. little brown fox\ncommand: all content deleted from mytextfile.txt\ncommand: mytextfile.txt is empty\ncommand: Invalid text index\ncommand: added to mytextfile.txt: \"foo\"\ncommand: added to mytextfile.txt: \"bar\"\ncommand: added to mytextfile.txt: \"baz\"\ncommand: 1. foo\n2. bar\n3. baz\ncommand: Invalid text index\ncommand: Invalid text index\ncommand: 1. foo\n2. bar\n3. baz\ncommand: all content deleted from mytextfile.txt\ncommand: ", result);
 	}
 	
 	@Test
@@ -217,7 +217,7 @@ public class MyTest {
 		TextBuddy.main(new String[] {"mytextfile.txt"});
 		
 		String result = outputStream.toString();
-		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: all content deleted from mytextfile.txt\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: mytextfile.txt has been successfully sorted\ncommand: 1: hue1\n2: test1\ncommand: ", result);
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: all content deleted from mytextfile.txt\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1. test1\n2. hue1\ncommand: mytextfile.txt has been successfully sorted\ncommand: 1. hue1\n2. test1\ncommand: ", result);
 	}
 	
 	@Test
@@ -246,7 +246,7 @@ public class MyTest {
 		TextBuddy.main(new String[] {"mytextfile.txt"});
 		
 		String result = outputStream.toString();
-		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: all content deleted from mytextfile.txt\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: No results found\ncommand: ", result);
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: all content deleted from mytextfile.txt\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1. test1\n2. hue1\ncommand: No results found\ncommand: ", result);
 	}
 	
 	@Test
@@ -275,7 +275,7 @@ public class MyTest {
 		TextBuddy.main(new String[] {"mytextfile.txt"});
 		
 		String result = outputStream.toString();
-		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: all content deleted from mytextfile.txt\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: 2: hue1\ncommand: ", result);
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: all content deleted from mytextfile.txt\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1. test1\n2. hue1\ncommand: 2. hue1\ncommand: ", result);
 	}
 	
 	@After

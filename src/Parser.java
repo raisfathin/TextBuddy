@@ -1,10 +1,14 @@
-
+/**
+ * This class is used to parse command and return a Command object
+ * to be run by the caller.
+ * 
+ * @author A0134155M
+ */
 public class Parser {
 	
 	/**
 	 * This operation splits the command entered by user to separate the command
-	 * type from the parameter. Since only add and delete has parameter, if the
-	 * command given is neither add nor delete, this method will return null.
+	 * type from the parameter if exists.
 	 * 
 	 * @param userCommand
 	 *            is the full command given by the user

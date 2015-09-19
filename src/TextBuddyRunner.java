@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * This class is used for TextBuddy's main functionality. This class can be
- * constructed using List<String> and String denoting the original text file and
+ * constructed using TextList and String denoting the original text file and
  * the path to the file.
  * 
  * @author A0134155M
@@ -37,7 +37,7 @@ public class TextBuddyRunner {
 	 * beforehand.
 	 * 
 	 * @param texts
-	 *            the content of original text file
+	 *        	  the content of original text file
 	 * @param filePath
 	 *            string containing the path to the text file
 	 */
@@ -63,6 +63,13 @@ public class TextBuddyRunner {
 		}
 	}
 
+	/**
+	 * This method is used to run the parsed command that is returned by
+	 * Parser class.
+	 * 
+	 * @param userCommand
+	 * 			  the command given by user
+	 */
 	private void parseAndRunCommand(String userCommand) {
 		Command parsedCommand = parser.parseCommand(userCommand);
 		parsedCommand.setFilePath(filePath);

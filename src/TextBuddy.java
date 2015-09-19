@@ -10,19 +10,45 @@ import java.util.Scanner;
  * exists, TextBuddy will load the content into the program. Error will be shown
  * if the text file is a directory. It is assumed that users do not need extra
  * whitespace surrounding their texts. Text Buddy saves any change to the text
- * file after every command. There are 6 commands supported in this version : 1.
- * Add text to the end 2. Delete text 3. Display all texts 4. Clear all texts 5.
- * Exit program Command format is given by the example interaction below :
+ * file after every command.
+ * There are 6 commands supported in this version :
+ * 1. Add text to the end of file
+ * 2. Delete text
+ * 3. Display all texts
+ * 4. Clear all texts
+ * 5. Sort texts in file
+ * 6. Search for keyword in file
+ * 7. Exit program
  * 
- * c:>java TextBuddy mytextfile.txt Welcome to TextBuddy. mytextfile.txt is
- * ready for use command: add little brown fox added to mytextfile.txt: “little
- * brown fox” command: display 1. little brown fox command: add jumped over the
- * moon added to mytextfile.txt: “jumped over the moon” command: display 1.
- * little brown fox 2. jumped over the moon command: delete 2 deleted from
- * mytextfile.txt: “jumped over the moon” command: display 1. little brown fox
- * command: clear all content deleted from mytextfile.txt command: display
- * mytextfile.txt is empty command: exit c:>
- * 
+ * Command format is given by the example interaction below :
+ 
+c:>java TextBuddy mytextfile.txt
+Welcome to TextBuddy. mytextfile.txt is ready for use
+command: add little brown fox
+added to mytextfile.txt: “little brown fox”
+command: display
+1. little brown fox
+command: add jumped over the moon
+added to mytextfile.txt: “jumped over the moon”
+command: display
+1. little brown fox
+2. jumped over the moon
+command: sort
+mytextfile.txt has been successfully sorted
+command: display
+1. jumped over the moon
+2. little brown fox
+command: delete 1
+deleted from mytextfile.txt: “jumped over the moon”
+command: display
+1. little brown fox
+command: clear
+all content deleted from mytextfile.txt
+command: display
+mytextfile.txt is empty
+command: exit
+c:>
+ 
  * This class prepares the necessary initialization like checking file validity,
  * loading the file into memory, and printing welcome message before running the
  * program. After the preparation is done, another class will then take over to
@@ -67,22 +93,14 @@ public class TextBuddy {
 		runner.run();
 	}
 
-	/**
-	 * This method is used to process the text file specified by the user in
-	 * command line argument
-	 * 
-	 * @param args
-	 *            is the program parameter given by the user.
-	 */
 	private static void processFile(String[] args) {
 		checkFileValidity(args);
 		loadFileContent(args);
 	}
 
 	/**
-	 * This method is used to load the content of the text file into a List
-	 * <String>. This method also assumes that the file path string given in the
-	 * parameter is valid.
+	 * This method is used to load the content of the text file into the program.
+	 * This method assumes that the filePath supplied is valid.
 	 * 
 	 * @param args
 	 *            is the program parameter given by the user.
