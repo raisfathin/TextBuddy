@@ -9,8 +9,8 @@ public class TextList {
 		texts.add(newText);
 	}
 	
-	public void remove(int index) {
-		//TODO
+	public void remove(int index) throws IndexOutOfBoundsException, UnsupportedOperationException {
+		texts.remove(index);
 	}
 	
 	public int size() {
@@ -31,6 +31,6 @@ public class TextList {
 	}
 	
 	public void clear() {
-		//TODO
+		texts.clear();
 	}
 }

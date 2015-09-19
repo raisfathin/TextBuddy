@@ -137,11 +137,34 @@ public class MyTest {
 		TextList texts = new TextList();
 		texts.clear();
 		assertEquals(0, texts.size());
+		texts.addText("test1");
+		assertEquals(1, texts.size());
+		assertEquals("test1", texts.get(0));
+		texts.addText("hue");
+		assertEquals("test1", texts.get(0));
+		assertEquals("hue", texts.get(1));
+		texts.sort();
+		assertEquals("hue", texts.get(0));
+		assertEquals("test1", texts.get(1));
+		texts.clear();
+		assertEquals(0, texts.size());
 	}
 	
 	@Test
 	public void testTextListRemove() {
 		TextList texts = new TextList();
+		try {
+			texts.remove(0);
+			//Unexpected
+			fail("Should not be able to remove from empty TextList");
+		} catch (IndexOutOfBoundsException e) {
+			//Expected
+		}
+		texts.addText("ha");
+		texts.addText("hue");
+		texts.remove(1);
+		assertEquals(1, texts.size());
+		assertEquals("ha", texts.get(0));
 	}
 	
 	@After
