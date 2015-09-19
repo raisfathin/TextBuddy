@@ -155,13 +155,6 @@ public class TextBuddy {
 		return args[0];
 	}
 
-	/**
-	 * This method is used to print welcome message to the user to notify that
-	 * TextBuddy is ready for use.
-	 * 
-	 * @param args
-	 *            is the command line argument given by the user.
-	 */
 	private static void printWelcomeMessage(String[] args) {
 		String filePath = getFilePath(args);
 		System.out.printf(WELCOME_MSG, filePath);
