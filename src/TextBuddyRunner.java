@@ -20,6 +20,7 @@ public class TextBuddyRunner {
 	private static final String EMPTY_TEXT_MSG = "%s is empty\n";
 	private static final String CLEAR_MSG = "all content deleted from %s\n";
 	private static final String TEXT_DISPLAY_MSG = "%d: %s\n";
+	private static final String SORT_MSG = "%s has been successfully sorted\n";
 	private static final String INVALID_TEXT_INDEX_ERROR = "Invalid text index\n";
 	private static final String CANNOT_SAVE_TO_FILE_ERROR = "Cannot save to file\n";
 	private static final String LINE_SEPARATOR = System.getProperty("line.separator");
@@ -96,12 +97,20 @@ public class TextBuddyRunner {
 			case EXIT :
 				stopProgram();
 				break;
+			case SORT :
+				sortAllTexts();
+				break;
 			case UNRECOGNIZED :
 				printUnrecognizedCommandError();
 				break;
 			default :
 				throw new AssertionError("There is no other type of command");
 		}
+	}
+
+	private void sortAllTexts() {
+		texts.sort();
+		System.out.printf(SORT_MSG, filePath);
 	}
 
 	/**
@@ -273,6 +282,8 @@ public class TextBuddyRunner {
 					return CommandType.DELETE;
 				case "clear" :
 					return CommandType.CLEAR;
+				case "sort" :
+					return CommandType.SORT;
 				case "exit" :
 					return CommandType.EXIT;
 				default :

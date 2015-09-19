@@ -205,7 +205,7 @@ public class MyTest {
 			e.printStackTrace();
 		}
 		
-		String input = "add test1\nadd hue1\ndisplay\nsort\nexit\n";
+		String input = "add test1\nadd hue1\ndisplay\nsort\ndisplay\nexit\n";
 		InputStream stringStream = new ByteArrayInputStream(input.getBytes());
 
 		OutputStream outputStream = new ByteArrayOutputStream();
@@ -217,7 +217,7 @@ public class MyTest {
 		TextBuddy.main(new String[] {"mytextfile.txt"});
 		
 		String result = outputStream.toString();
-		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: mytextfile.txt has been successfully sorted\ncommand: ", result);
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: mytextfile.txt has been successfully sorted\ncommand: 1: hue1\n2: test1\ncommand: ", result);
 	}
 	
 	@After
