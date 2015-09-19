@@ -118,7 +118,7 @@ public class MyTest {
 	}
 	
 	@Test
-	public void testTextList() {
+	public void testTextListBasic() {
 		TextList texts = new TextList();
 		assertEquals(0, texts.size());
 		texts.addText("test1");
@@ -130,6 +130,18 @@ public class MyTest {
 		texts.sort();
 		assertEquals("hue", texts.get(0));
 		assertEquals("test1", texts.get(1));
+	}
+	
+	@Test
+	public void testTextListClear() {
+		TextList texts = new TextList();
+		texts.clear();
+		assertEquals(0, texts.size());
+	}
+	
+	@Test
+	public void testTextListRemove() {
+		TextList texts = new TextList();
 	}
 	
 	@After
