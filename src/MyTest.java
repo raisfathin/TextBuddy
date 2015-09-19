@@ -167,6 +167,30 @@ public class MyTest {
 		assertEquals("ha", texts.get(0));
 	}
 	
+	@Test
+	public void testTextListSearchNotFound() {
+		TextList texts = new TextList();
+		String[] result = texts.search("hue");
+		assertArrayEquals(null, result);
+		texts.addText("test1");
+		texts.addText("test2");
+		texts.addText("hue2");
+		result = texts.search("text");
+		assertArrayEquals(null, result);
+	}
+	
+	@Test
+	public void testTextListSearchFound() {
+		TextList texts = new TextList();
+		String[] result = texts.search("hue");
+		assertArrayEquals(null, result);
+		texts.addText("test1");
+		texts.addText("test2");
+		texts.addText("hue2");
+		result = texts.search("test");
+		assertArrayEquals(new String[] {"test1", "test2"}, result);
+	}
+	
 	@After
 	public void tearDown() {
 		System.setSecurityManager(null);
