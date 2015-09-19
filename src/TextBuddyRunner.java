@@ -21,6 +21,7 @@ public class TextBuddyRunner {
 	private static final String CLEAR_MSG = "all content deleted from %s\n";
 	private static final String TEXT_DISPLAY_MSG = "%d: %s\n";
 	private static final String SORT_MSG = "%s has been successfully sorted\n";
+	private static final String SEARCH_NO_RESULT_MSG = "No results found\n";
 	private static final String INVALID_TEXT_INDEX_ERROR = "Invalid text index\n";
 	private static final String CANNOT_SAVE_TO_FILE_ERROR = "Cannot save to file\n";
 	private static final String LINE_SEPARATOR = System.getProperty("line.separator");
@@ -100,11 +101,26 @@ public class TextBuddyRunner {
 			case SORT :
 				sortAllTexts();
 				break;
+			case SEARCH :
+				commandParameter = getCommandParameter(userCommand, commandType);
+				searchText(commandParameter);
+				break;
 			case UNRECOGNIZED :
 				printUnrecognizedCommandError();
 				break;
 			default :
 				throw new AssertionError("There is no other type of command");
+		}
+	}
+
+	private void searchText(String keyword) {
+		Integer[] result = texts.search(keyword);
+		if (result.length == 0) {
+			System.out.printf(SEARCH_NO_RESULT_MSG);
+		} else {
+			for (int i = 0; i < result.length; i++) {
+				System.out.printf(TEXT_DISPLAY_MSG, result[i] + 1, texts.get(result[i]));
+			}
 		}
 	}
 
@@ -131,6 +147,8 @@ public class TextBuddyRunner {
 			commandParameter = userCommand.replaceFirst("\\s*add\\s*", "");
 		} else if (commandType == CommandType.DELETE) {
 			commandParameter = userCommand.replaceFirst("\\s*delete\\s*", "");
+		} else if (commandType == CommandType.SEARCH) {
+			commandParameter = userCommand.replaceFirst("\\s*search\\s*", "");
 		}
 
 		return commandParameter;
@@ -284,6 +302,8 @@ public class TextBuddyRunner {
 					return CommandType.CLEAR;
 				case "sort" :
 					return CommandType.SORT;
+				case "search" :
+					return CommandType.SEARCH;
 				case "exit" :
 					return CommandType.EXIT;
 				default :
