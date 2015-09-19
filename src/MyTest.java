@@ -117,6 +117,21 @@ public class MyTest {
 		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"little brown fox\"\ncommand: 1: little brown fox\ncommand: added to mytextfile.txt: \"jumped over the moon\"\ncommand: 1: little brown fox\n2: jumped over the moon\ncommand: deleted from mytextfile.txt: \"jumped over the moon\"\ncommand: 1: little brown fox\ncommand: all content deleted from mytextfile.txt\ncommand: mytextfile.txt is empty\ncommand: Invalid text index\ncommand: added to mytextfile.txt: \"foo\"\ncommand: added to mytextfile.txt: \"bar\"\ncommand: added to mytextfile.txt: \"baz\"\ncommand: 1: foo\n2: bar\n3: baz\ncommand: Invalid text index\ncommand: Invalid text index\ncommand: 1: foo\n2: bar\n3: baz\ncommand: all content deleted from mytextfile.txt\ncommand: ", result);
 	}
 	
+	@Test
+	public void testTextList() {
+		TextList texts = new TextList();
+		assertEquals(0, texts.size());
+		texts.addText("test1");
+		assertEquals(1, texts.size());
+		assertEquals("test1", texts.get(0));
+		texts.addText("hue");
+		assertEquals("test1", texts.get(0));
+		assertEquals("hue", texts.get(1));
+		texts.sort();
+		assertEquals("hue", texts.get(0));
+		assertEquals("test1", texts.get(1));
+	}
+	
 	@After
 	public void tearDown() {
 		System.setSecurityManager(null);
