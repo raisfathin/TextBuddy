@@ -1,6 +1,6 @@
 
 public abstract class Command {
-	private String filePath, commandParameter;
+	protected String filePath, commandParameter;
 	
 	public Command(String commandParameter) {
 		this.commandParameter = commandParameter;
