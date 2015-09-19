@@ -27,7 +27,15 @@ public class TextList {
 	}
 	
 	public String[] search(String keyword) {
-		return new String[] {};
+		String[] result = new String[size()];
+		int resultSize = 0;
+		for (int i = 0; i < size(); i++) {
+			String currentText = get(i);
+			if (currentText.contains(keyword)) {
+				result[resultSize++] = currentText;
+			}
+		}
+		return Arrays.copyOf(result, resultSize);
 	}
 	
 	public void clear() {
