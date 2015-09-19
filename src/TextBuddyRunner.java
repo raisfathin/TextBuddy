@@ -191,7 +191,7 @@ public class TextBuddyRunner {
 			if (!validTextIndex(textIndex)) {
 				System.out.printf(INVALID_TEXT_INDEX_ERROR);
 			} else {
-				System.out.printf(DELETE_MSG, filePath, texts.get(textIndex - 1));
+				System.out.printf(DELETE_MSG, filePath, texts.get(textIndex));
 				texts.remove(textIndex);
 			}
 		}
