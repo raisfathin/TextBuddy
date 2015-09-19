@@ -220,6 +220,64 @@ public class MyTest {
 		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: mytextfile.txt has been successfully sorted\ncommand: 1: hue1\n2: test1\ncommand: ", result);
 	}
 	
+	@Test
+	public void testTextBuddySearchNotFound() {
+		Runtime r = Runtime.getRuntime();
+		try {
+			Process p = r.exec("rm mytextfile.txt");
+			p.waitFor();
+		} catch (IOException e) {
+			fail("Should be able to remove test file");
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			fail("Should be able to remove test file");
+			e.printStackTrace();
+		}
+		
+		String input = "add test1\nadd hue1\ndisplay\nsearch hue3\nexit\n";
+		InputStream stringStream = new ByteArrayInputStream(input.getBytes());
+
+		OutputStream outputStream = new ByteArrayOutputStream();
+		PrintStream printStream = new PrintStream(outputStream);
+		
+		System.setIn(stringStream);
+		System.setOut(printStream);
+		
+		TextBuddy.main(new String[] {"mytextfile.txt"});
+		
+		String result = outputStream.toString();
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: No results found\ncommand: ", result);
+	}
+	
+	@Test
+	public void testTextBuddySearchFound() {
+		Runtime r = Runtime.getRuntime();
+		try {
+			Process p = r.exec("rm mytextfile.txt");
+			p.waitFor();
+		} catch (IOException e) {
+			fail("Should be able to remove test file");
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			fail("Should be able to remove test file");
+			e.printStackTrace();
+		}
+		
+		String input = "add test1\nadd hue1\ndisplay\nsearch hue1\nexit\n";
+		InputStream stringStream = new ByteArrayInputStream(input.getBytes());
+
+		OutputStream outputStream = new ByteArrayOutputStream();
+		PrintStream printStream = new PrintStream(outputStream);
+		
+		System.setIn(stringStream);
+		System.setOut(printStream);
+		
+		TextBuddy.main(new String[] {"mytextfile.txt"});
+		
+		String result = outputStream.toString();
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: 2: hue1\ncommand: ", result);
+	}
+	
 	@After
 	public void tearDown() {
 		System.setSecurityManager(null);
