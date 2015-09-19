@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -26,8 +27,7 @@ public class TextList {
 	}
 	
 	public String[] search(String keyword) {
-		//TODO
-		return null;
+		return new String[] {};
 	}
 	
 	public void clear() {

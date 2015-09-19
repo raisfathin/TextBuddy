@@ -171,19 +171,19 @@ public class MyTest {
 	public void testTextListSearchNotFound() {
 		TextList texts = new TextList();
 		String[] result = texts.search("hue");
-		assertArrayEquals(null, result);
+		assertArrayEquals(new String[] {}, result);
 		texts.addText("test1");
 		texts.addText("test2");
 		texts.addText("hue2");
 		result = texts.search("text");
-		assertArrayEquals(null, result);
+		assertArrayEquals(new String[] {}, result);
 	}
 	
 	@Test
 	public void testTextListSearchFound() {
 		TextList texts = new TextList();
 		String[] result = texts.search("hue");
-		assertArrayEquals(null, result);
+		assertArrayEquals(new String[] {}, result);
 		texts.addText("test1");
 		texts.addText("test2");
 		texts.addText("hue2");
