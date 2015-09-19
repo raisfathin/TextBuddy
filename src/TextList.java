@@ -26,13 +26,13 @@ public class TextList {
 		Collections.sort(texts);
 	}
 	
-	public String[] search(String keyword) {
-		String[] result = new String[size()];
+	public Integer[] search(String keyword) {
+		Integer[] result = new Integer[size()];
 		int resultSize = 0;
 		for (int i = 0; i < size(); i++) {
 			String currentText = get(i);
 			if (currentText.contains(keyword)) {
-				result[resultSize++] = currentText;
+				result[resultSize++] = i;
 			}
 		}
 		return Arrays.copyOf(result, resultSize);

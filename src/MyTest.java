@@ -170,7 +170,7 @@ public class MyTest {
 	@Test
 	public void testTextListSearchNotFound() {
 		TextList texts = new TextList();
-		String[] result = texts.search("hue");
+		Integer[] result = texts.search("hue");
 		assertArrayEquals(new String[] {}, result);
 		texts.addText("test1");
 		texts.addText("test2");
@@ -182,13 +182,13 @@ public class MyTest {
 	@Test
 	public void testTextListSearchFound() {
 		TextList texts = new TextList();
-		String[] result = texts.search("hue");
-		assertArrayEquals(new String[] {}, result);
+		Integer[] result = texts.search("hue");
+		assertArrayEquals(new Integer[] {}, result);
 		texts.addText("test1");
 		texts.addText("test2");
 		texts.addText("hue2");
 		result = texts.search("test");
-		assertArrayEquals(new String[] {"test1", "test2"}, result);
+		assertArrayEquals(new Integer[] {0, 1}, result);
 	}
 	
 	@Test
@@ -205,7 +205,7 @@ public class MyTest {
 			e.printStackTrace();
 		}
 		
-		String input = "add test1\nadd hue1\ndisplay\nsort\ndisplay\nexit\n";
+		String input = "clear\nadd test1\nadd hue1\ndisplay\nsort\ndisplay\nexit\n";
 		InputStream stringStream = new ByteArrayInputStream(input.getBytes());
 
 		OutputStream outputStream = new ByteArrayOutputStream();
@@ -217,7 +217,7 @@ public class MyTest {
 		TextBuddy.main(new String[] {"mytextfile.txt"});
 		
 		String result = outputStream.toString();
-		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: mytextfile.txt has been successfully sorted\ncommand: 1: hue1\n2: test1\ncommand: ", result);
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: all content deleted from mytextfile.txt\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: mytextfile.txt has been successfully sorted\ncommand: 1: hue1\n2: test1\ncommand: ", result);
 	}
 	
 	@Test
@@ -234,7 +234,7 @@ public class MyTest {
 			e.printStackTrace();
 		}
 		
-		String input = "add test1\nadd hue1\ndisplay\nsearch hue3\nexit\n";
+		String input = "clear\nadd test1\nadd hue1\ndisplay\nsearch hue3\nexit\n";
 		InputStream stringStream = new ByteArrayInputStream(input.getBytes());
 
 		OutputStream outputStream = new ByteArrayOutputStream();
@@ -246,7 +246,7 @@ public class MyTest {
 		TextBuddy.main(new String[] {"mytextfile.txt"});
 		
 		String result = outputStream.toString();
-		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: No results found\ncommand: ", result);
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: all content deleted from mytextfile.txt\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: No results found\ncommand: ", result);
 	}
 	
 	@Test
@@ -263,7 +263,7 @@ public class MyTest {
 			e.printStackTrace();
 		}
 		
-		String input = "add test1\nadd hue1\ndisplay\nsearch hue1\nexit\n";
+		String input = "clear\nadd test1\nadd hue1\ndisplay\nsearch hue1\nexit\n";
 		InputStream stringStream = new ByteArrayInputStream(input.getBytes());
 
 		OutputStream outputStream = new ByteArrayOutputStream();
@@ -275,7 +275,7 @@ public class MyTest {
 		TextBuddy.main(new String[] {"mytextfile.txt"});
 		
 		String result = outputStream.toString();
-		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: 2: hue1\ncommand: ", result);
+		assertEquals("Welcome to TextBuddy. mytextfile.txt is ready for use\ncommand: all content deleted from mytextfile.txt\ncommand: added to mytextfile.txt: \"test1\"\ncommand: added to mytextfile.txt: \"hue1\"\ncommand: 1: test1\n2: hue1\ncommand: 2: hue1\ncommand: ", result);
 	}
 	
 	@After
