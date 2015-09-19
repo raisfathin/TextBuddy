@@ -1,8 +1,6 @@
 import java.io.File;
 import java.io.IOException;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -45,8 +43,8 @@ public class TextBuddy {
 	// This Scanner is used to read from the text file
 	private static Scanner textFileScanner;
 
-	// This List<String> is used to store user texts in our program
-	private static List<String> texts = new ArrayList<String>();
+	// This TextList is used to store user texts in our program
+	private static TextList texts = new TextList();
 
 	// This TextBuddyRunner will run the core functionality of TextBuddy
 	private static TextBuddyRunner runner;
@@ -96,7 +94,7 @@ public class TextBuddy {
 			textFileScanner = new Scanner(textFile);
 
 			while (textFileScanner.hasNextLine()) {
-				texts.add(textFileScanner.nextLine());
+				texts.addText(textFileScanner.nextLine());
 			}
 		} catch (IOException e) {
 			assert(false);

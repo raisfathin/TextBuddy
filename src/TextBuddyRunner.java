@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -29,7 +28,7 @@ public class TextBuddyRunner {
 	private ProgramState currentProgramState;
 
 	// This List is used to store all texts in the file
-	private List<String> texts = null;
+	private TextList texts = null;
 
 	// This String is used to store the path to the text file
 	private String filePath = null;
@@ -47,7 +46,7 @@ public class TextBuddyRunner {
 	 * @param filePath
 	 *            string containing the path to the text file
 	 */
-	public TextBuddyRunner(List<String> texts, String filePath) {
+	public TextBuddyRunner(TextList texts, String filePath) {
 		this.texts = texts;
 		this.filePath = filePath;
 	}
@@ -230,7 +229,7 @@ public class TextBuddyRunner {
 	 * method displays all the texts stored in memory.
 	 */
 	private void displayTexts() {
-		if (texts.isEmpty()) {
+		if (texts.size() == 0) {
 			System.out.printf(EMPTY_TEXT_MSG, filePath);
 		} else {
 			for (int i = 0; i < texts.size(); i++) {
@@ -248,7 +247,7 @@ public class TextBuddyRunner {
 	 */
 	private void addText(String textToBeAdded) {
 		System.out.printf(ADD_MSG, filePath, textToBeAdded);
-		texts.add(textToBeAdded);
+		texts.addText(textToBeAdded);
 	}
 
 	/**
