@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TextList {
 	List<String> texts = new ArrayList<String>();
 	
 	public void addText(String newText) {
-		//TODO
+		texts.add(newText);
 	}
 	
 	public void remove(int index) {
@@ -13,15 +14,15 @@ public class TextList {
 	}
 	
 	public int size() {
-		return 0;
+		return texts.size();
 	}
 	
-	public String get(int index) {
-		return null;
+	public String get(int index) throws IndexOutOfBoundsException {
+		return texts.get(index);
 	}
 	
 	public void sort() {
-		//TODO
+		Collections.sort(texts);
 	}
 	
 	public String[] search(String keyword) {
